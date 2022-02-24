@@ -3,7 +3,7 @@ const {
 } = Vue
 
 import router from './router/index.js'
-// import SoftUIDashboard from "./soft-ui-dashboard.js";
+import SoftUIDashboard from "./assets/js/my_soft-ui-dashboard.js";
 
 const app = createApp({})
 
@@ -13,5 +13,5 @@ app.component('home', {
 const Home = app.component('home')
 
 app.use(router)
-// app.use(SoftUIDashboard);
+app.use(SoftUIDashboard);
 app.mount('#app')
