@@ -1,25 +1,46 @@
-import {
-  createRouter,
-  createWebHistory
-} from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+const {
+    createRouter,
+    createWebHistory,
+    createWebHashHistory
+} = VueRouter
 
-const router = createRouter({
-  history: createWebHistory(
-    import.meta.env.BASE_URL),
-  routes: [{
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // component: () => import('../views/AboutView.vue')
-      component: About
-    },
-  ]
+const {
+    createApp
+} = Vue
+
+const app = createApp({})
+
+app.component('home', {
+    template: '<div>home</div>',
 })
 
-export default router
+const Home = app.component('home')
+const Foo = {
+    template: '<div>foo</div>'
+}
+const Bar = {
+    template: '<div>bar</div>'
+}
+
+const routes = [{
+        path: '/',
+        name: 'home',
+        component: Home
+    },
+    {
+        path: '/foo',
+        component: Foo
+    },
+    {
+        path: '/bar',
+        component: Bar
+    },
+]
+
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHistory(),
+    routes,
+})
+
+app.use(router)
+app.mount('#app')

@@ -1,9 +1,18 @@
-import { createApp } from 'vue'
-import App from '../App.vue'
-import { createRouter, createWebHistory } from "../assets/js/vue-router-4.0.12/dist/vue-router.global.js"
+const {
+    createRouter,
+    createWebHistory,
+    createWebHashHistory
+} = VueRouter
 
-const Home = { template: '<div>Home</div>' }
-const About = { template: '<div>About</div>' }
+const Home = {
+    template: '<div>HOME</div>'
+}
+const Foo = {
+    template: '<div>Foo</div>'
+}
+const Bar = {
+    template: '<div>Bar</div>'
+}
 
 const routes = [{
         path: '/',
@@ -11,30 +20,18 @@ const routes = [{
         component: Home
     },
     {
-        path: '/about',
-        name: 'about',
-        component: About
+        path: '/foo',
+        component: Foo
+    },
+    {
+        path: '/bar',
+        component: Bar
     },
 ]
 
-const router = createRouter({
-    history: createWebHistory(),
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHistory(),
     routes,
 })
 
-// const app = createApp(App)
-// app.use(router)
-// app.mount('#app')
-
 export default router
-
-
-
-// const router = VueRouter.createRouter({
-//     history: VueRouter.createWebHashHistory(),
-//     routes,
-// })
-
-// const app = Vue.createApp(App)
-// app.use(router)
-// app.mount('#app')
